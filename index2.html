@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigiGrow - Digital Marketing</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #581c87 50%, #0f172a 100%);
+            color: white;
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        nav.scrolled {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, #c084fc, #f9a8d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #c084fc;
+        }
+
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            display: none;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 0;
+            transition: color 0.2s;
+        }
+
+        .mobile-menu a:hover {
+            color: #c084fc;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 1rem 5rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, #c084fc, #f9a8d4, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #d1d5db;
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, #9333ea, #ec4899);
+            padding: 1rem 2rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(147, 51, 234, 0.5);
+        }
+
+        .btn-secondary {
+            border: 2px solid #c084fc;
+            padding: 1rem 2rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(192, 132, 252, 0.1);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-card .num {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #c084fc;
+        }
+
+        .stat-card .label {
+            color: #9ca3af;
+            margin-top: 0.5rem;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 1rem;
+            background: rgba(30, 41, 59, 0.3);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #9ca3af;
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(192, 132, 252, 0.2);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px rgba(147, 51, 234, 0.2);
+        }
+
+        .service-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .service-card p {
+            color: #9ca3af;
+            margin-bottom: 1rem;
+        }
+
+        .service-card a {
+            color: #c084fc;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            transition: gap 0.3s;
+        }
+
+        .service-card a:hover {
+            gap: 0.5rem;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 5rem 1rem;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            cursor: pointer;
+            height: 16rem;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, #581c87, rgba(88, 28, 135, 0.7), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-info h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .portfolio-info .client {
+            color: #d8b4fe;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-info .result {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4ade80;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 5rem 1rem;
+            background: rgba(30, 41, 59, 0.3);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(192, 132, 252, 0.2);
+            transition: all 0.3s;
+        }
+
+        .testimonial-card:hover {
+            border-color: rgba(192, 132, 252, 0.4);
+        }
+
+        .stars {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .star {
+            color: #facc15;
+        }
+
+        .testimonial-card .text {
+            color: #d1d5db;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-card .name {
+            font-weight: bold;
+        }
+
+        .testimonial-card .company {
+            color: #c084fc;
+            font-size: 0.875rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 1rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            max-width: 1024px;
+            margin: 0 auto;
+        }
+
+        .contact h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            background: #1e293b;
+            border: 1px solid rgba(192, 132, 252, 0.3);
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            color: white;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #9333ea;
+        }
+
+        .form-group textarea {
+            resize: none;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(90deg, #9333ea, #ec4899);
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            border: none;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .submit-btn:hover {
+            box-shadow: 0 0 20px rgba(147, 51, 234, 0.5);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .contact-item i {
+            color: #c084fc;
+            font-size: 1.5rem;
+        }
+
+        .contact-item .label {
+            font-weight: 600;
+        }
+
+        .contact-item .value {
+            color: #9ca3af;
+        }
+
+        .why-choose {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(147, 51, 234, 0.2), rgba(236, 72, 153, 0.2));
+            border-radius: 0.5rem;
+            border: 1px solid rgba(192, 132, 252, 0.3);
+        }
+
+        .why-choose h4 {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .why-choose ul {
+            list-style: none;
+            color: #d1d5db;
+        }
+
+        .why-choose li {
+            margin: 0.5rem 0;
+        }
+
+        /* Footer */
+        footer {
+            background: #020617;
+            padding: 2rem 1rem;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #9333ea;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            border: none;
+            color: white;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .scroll-top.visible {
+            display: flex;
+        }
+
+        .scroll-top:hover {
+            background: #7e22ce;
+            transform: scale(1.1);
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .hero h1 {
+                font-size: 4rem;
+            }
+
+            .stats {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">DigiGrow</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="menu-btn" onclick="toggleMenu()">
+                <i class="fas fa-bars" id="menu-icon"></i>
+            </button>
+        </div>
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="#home" onclick="toggleMenu()">Home</a>
+            <a href="#services" onclick="toggleMenu()">Services</a>
+            <a href="#portfolio" onclick="toggleMenu()">Portfolio</a>
+            <a href="#testimonials" onclick="toggleMenu()">Testimonials</a>
+            <a href="#contact" onclick="toggleMenu()">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Grow Your Business</h1>
+            <p>Expert Digital Marketing Solutions That Drive Results</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn-primary">Get Started</a>
+                <a href="#portfolio" class="btn-secondary">View Our Work</a>
+            </div>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="num">500+</div>
+                    <div class="label">Happy Clients</div>
+                </div>
+                <div class="stat-card">
+                    <div class="num">1000+</div>
+                    <div class="label">Projects Done</div>
+                </div>
+                <div class="stat-card">
+                    <div class="num">98%</div>
+                    <div class="label">Success Rate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="num">24/7</div>
+                    <div class="label">Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <p class="section-subtitle">Comprehensive digital marketing solutions</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="icon">🎯</div>
+                    <h3>SEO Optimization</h3>
+                    <p>Boost your search rankings and organic traffic</p>
+                    <a href="#contact">Learn More <i class="fas fa-chevron-right"></i></a>
+                </div>
+                <div class="service-card">
+                    <div class="icon">📱</div>
+                    <h3>Social Media Marketing</h3>
+                    <p>Engage your audience across all platforms</p>
+                    <a href="#contact">Learn More <i class="fas fa-chevron-right"></i></a>
+                </div>
+                <div class="service-card">
+                    <div class="icon">✍️</div>
+                    <h3>Content Marketing</h3>
+                    <p>Create compelling content that converts</p>
+                    <a href="#contact">Learn More <i class="fas fa-chevron-right"></i></a>
+                </div>
+                <div class="service-card">
+                    <div class="icon">💰</div>
+                    <h3>PPC Advertising</h3>
+                    <p>Maximize ROI with targeted ad campaigns</p>
+                    <a href="#contact">Learn More <i class="fas fa-chevron-right"></i></a>
+                </div>
+                <div class="service-card">
+                    <div class="icon">📧</div>
+                    <h3>Email Marketing</h3>
+                    <p>Build lasting relationships with customers</p>
+                    <a href="#contact">Learn More <i class="fas fa-chevron-right"></i></a>
+                </div>
+                <div class="service-card">
+                    <div class="icon">🎨</div>
+                    <h3>Brand Strategy</h3>
+                    <p>Develop a powerful brand identity</p>
+                    <a href="#contact">Learn More <i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title">Our Work</h2>
+            <p class="section-subtitle">Success stories that inspire</p>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop" alt="E-commerce Growth">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-info">
+                            <h3>E-commerce Growth</h3>
+                            <p class="client">Fashion Brand</p>
+                            <p class="result">+250% Sales</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8f2c293?w=400&h=300&fit=crop" alt="Social Campaign">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-info">
+                            <h3>Social Campaign</h3>
+                            <p class="client">Tech Startup</p>
+                            <p class="result">1M+ Reach</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&h=300&fit=crop" alt="SEO Success">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-info">
+                            <h3>SEO Success</h3>
+                            <p class="client">Local Business</p>
+                            <p class="result">#1 Rankings</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&h=300&fit=crop" alt="Brand Revival">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-info">
+                            <h3>Brand Revival</h3>
+                            <p class="client">Restaurant Chain</p>
+                            <p class="result">+180% Traffic</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Clients Say</h2>
+            <p class="section-subtitle">Trusted by businesses worldwide</p>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star star"></i>
+                        <i class="fas fa-star star"></i>
+                        <i class="fas fa-star star"></i>
+                        <i class="fas fa-star star"></i>
+                        <i class="fas fa-star star"></i>
+                    </div>
+                    <p class="text">"Outstanding results! Our online presence has completely transformed."</p>
+                    <p class="name">Sarah Johnson</p>
+                    <p class="company">Tech Innovations</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star star"></i>
+                        <i class="fas fa-star star"></i>
+                        <i class="fas fa-star star"></i>
+                        <i class="fas fa-star star"></i>
+                        <i class="fas fa-star star"></i>
+                    </div>
+                    <p class="text">"Professional team that delivers on promises. Highly recommended!"</p>
+                    <p class="name">Mike Chen</p>
+                    <p class="company">Retail Solutions</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star star"></i>
+                        <i class="fas fa-star star"></i>
+                        <i class="fas fa-star star"></i>
+                        <i class="fas fa-star star"></i>
+                        <i class="fas fa-star star"></i>
+                    </div>
+                    <p class="text">"Best marketing agency we've worked with. ROI exceeded expectations."</p>
+                    <p class="name">Emily Davis</p>
+                    <p class="company">Startup Hub</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Let's discuss your project</p>
+            
+            <div class="contact-grid">
+                <div>
+                    <h3>Send us a message</h3>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <input type="text" id="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <select id="service" required>
+                                <option value="">Select Service</option>
+                                <option value="seo">SEO Optimization</option>
+                                <option value="social">Social Media Marketing</option>
+                                <option value="content">Content Marketing</option>
+                                <option value="ppc">PPC Advertising</option>
+                                <option value="email">Email Marketing</option>
+                                <option value="brand">Brand Strategy</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" rows="4" placeholder="Tell us about your project" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            Send Message <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <div>
+                    <h3>Contact Information</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <p class="label">Email</p>
+                                <p class="value">hello@digigrow.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <p class="label">Phone</p>
+                                <p class="value">+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <p class="label">Address</p>
+                                <p class="value">123 Digital Street, Marketing City, MC 12345</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="why-choose">
+                        <h4>Why Choose Us?</h4>
+                        <ul>
+                            <li>✓ Proven track record of success</li>
+                            <li>✓ Customized strategies for your business</li>
+                            <li>✓ Transparent reporting & communication</li>
+                            <li>✓ Dedicated account manager</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 DigiGrow. All rights reserved.</p>
+        <p>Growing businesses through digital excellence</p>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scroll-top" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            menu.classList.toggle('active');
+            
+            if (menu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+
+        // Scroll effects
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            const scrollTop = document.getElementById('scroll-top');
+            
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            if (window.scrollY > 300) {
+                scrollTop.classList.add('visible');
+            } else {
+                scrollTop.classList.remove('visible');
+            }
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll to top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Form submission
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            
+            alert(`Thank you ${name}! We'll contact you at ${email} soon.`);
+            
+            // Reset form
+            e.target.reset();
+        });
+    </script>
