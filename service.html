@@ -3,16 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <title>Services | DigiMarketing Pro</title>
-  <link rel="stylesheet" href="./index.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bootstrap -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome (IMPORTANT) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- AOS -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
 
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="./index.css">
 </head>
 <body>
-
-<!-- NAVBAR (same as home) -->
-
-    <!-- Navbar -->
+ <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#"><i class="fas fa-chart-line"></i> DigiMarketing Pro</a>
@@ -31,41 +37,101 @@
         </div>
     </nav>
 
-<section class="services" style="margin-top:100px">
+<!-- ================= SERVICES SECTION ================= -->
+<section class="services" id="services" style="padding-top:120px">
   <div class="container">
     <div class="text-center" data-aos="fade-up">
       <h2 class="section-title">Our Services</h2>
-      <p class="section-subtitle">What we offer</p>
+      <p class="section-subtitle">
+        Comprehensive digital marketing solutions tailored to your needs
+      </p>
     </div>
 
     <div class="row">
-      <div class="col-lg-4 mb-4">
-        <div class="service-card">
-          <div class="service-icon"><i class="fas fa-search"></i></div>
-          <h3>SEO Optimization</h3>
-          <p>Rank higher on Google.</p>
-        </div>
+
+      <!-- SEO -->
+      <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+        <a href="./seo.html" class="service-link">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-search"></i>
+            </div>
+            <h3>SEO Optimization</h3>
+            <p>
+              Boost your website's visibility and rank higher on search engines
+              with our proven SEO strategies.
+            </p>
+          </div>
+        </a>
       </div>
 
-      <div class="col-lg-4 mb-4">
+      <!-- Social Media -->
+      <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
         <div class="service-card">
           <div class="service-icon"><i class="fas fa-bullhorn"></i></div>
           <h3>Social Media Marketing</h3>
-          <p>Grow brand awareness.</p>
+          <p>Engage your audience and build a strong brand presence.</p>
         </div>
       </div>
 
-      <div class="col-lg-4 mb-4">
+      <!-- PPC -->
+      <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
         <div class="service-card">
           <div class="service-icon"><i class="fas fa-ad"></i></div>
           <h3>PPC Advertising</h3>
-          <p>Increase ROI.</p>
+          <p>Drive targeted traffic and maximize ROI.</p>
         </div>
       </div>
+
+
+      <!-- Email -->
+      <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-envelope"></i></div>
+          <h3>Email Marketing</h3>
+          <p>Build lasting relationships with personalized email campaigns that convert.</p>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="500">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-pencil-alt"></i></div>
+          <h3>Content Creation</h3>
+          <p>Compelling content that tells your story and engages your target audience effectively.</p>
+        </div>
+      </div>
+
+      <!-- Analytics -->
+      <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="600">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-chart-bar"></i></div>
+          <h3>Analytics & Reporting</h3>
+          <p>Data-driven insights and comprehensive reports to track your marketing success.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
+       
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= SCRIPTS ================= -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script src="./index.js"></script>
+
+<script>
+  AOS.init({
+    duration: 1000,
+    once: true
+  });
+</script>
+
 </body>
 </html>
