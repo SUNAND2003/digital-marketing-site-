@@ -3,48 +3,121 @@
 <head>
   <meta charset="UTF-8">
   <title>Contact | DigiMarketing Pro</title>
-  <link rel="stylesheet" href="./index.css">
+
+  <!-- Bootstrap FIRST -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Your Main CSS (controls ALL colors) -->
+  <link rel="stylesheet" href="./index.css">
+
+  <!-- FIX: prevent Bootstrap color override (NO COLOR CHANGE) -->
+  <style>
+    .contact .form-control {
+      background-color: inherit;
+      color: inherit;
+      border-color: inherit;
+    }
+
+    .contact .form-control::placeholder {
+      color: inherit;
+      opacity: 0.6;
+    }
+
+    .contact .form-control:focus {
+      box-shadow: none;
+    }
+
+    .contact .btn {
+      color: inherit;
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#"><i class="fas fa-chart-line"></i> DigiMarketing Pro</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="./index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./service.html">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./blog.html">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./portfolio.html">Portfolio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./contact.html">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-
-
-<section class="contact" style="margin-top:100px">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top">
   <div class="container">
+    <a class="navbar-brand" href="#">
+      <i class="fas fa-chart-line"></i> DigiMarketing Pro
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="./index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="./service.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="./blog.html">Blog</a></li>
+        <li class="nav-item"><a class="nav-link" href="./portfolio.html">Portfolio</a></li>
+        <li class="nav-item"><a class="nav-link active" href="./contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Contact Section -->
+<section class="contact py-5" style="margin-top:100px">
+  <div class="container">
+
     <div class="text-center mb-5">
       <h2 class="section-title">Contact Us</h2>
       <p class="section-subtitle">Let’s talk</p>
     </div>
 
-    <form id="contactForm" class="contact-form">
-      <input class="form-control mb-3" placeholder="Your Name" required>
-      <input class="form-control mb-3" placeholder="Email" required>
-      <textarea class="form-control mb-3" rows="4" placeholder="Message"></textarea>
-      <button class="btn btn-primary-custom w-100">Send Message</button>
-    </form>
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8">
+
+        <form id="contactForm" class="contact-form">
+
+          <div class="mb-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Your Name"
+              required
+            >
+          </div>
+
+          <div class="mb-3">
+            <input
+              type="email"
+              class="form-control"
+              placeholder="Email"
+              required
+            >
+          </div>
+
+          <div class="mb-4">
+            <textarea
+              class="form-control"
+              rows="4"
+              placeholder="Message"
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary-custom w-100">
+            Send Message
+          </button>
+
+        </form>
+
+      </div>
+    </div>
+
   </div>
 </section>
 
-<script src="index.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+
+<!-- Your JS -->
+<script src="./index.js"></script>
+
 </body>
 </html>
