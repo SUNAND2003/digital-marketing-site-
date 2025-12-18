@@ -587,6 +587,35 @@
 
 
 
+/* HERO IMAGE – ONE TIME ONLY */
+.hero-image {
+  animation: heroImageOnce 1.6s ease-out forwards;
+}
 
+@keyframes heroImageOnce {
+  0% {
+    transform: translateY(20px) scale(0.95);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
 
-        
+/* BUTTON SAFETY FIX */
+.hero-buttons,
+.hero-buttons .btn {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
+/* OPTIONAL: NICE BUTTON HOVER */
+.hero-buttons .btn {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-buttons .btn:hover {
+  transform: translateY(-4px);
+}
