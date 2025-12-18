@@ -2,67 +2,159 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog | DigiMarketing Pro</title>
-  <link rel="stylesheet" href="./index.css">
+
+  <!-- Bootstrap CSS -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- AOS -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="./index.css">
+
+  <style>
+    /* ===== PAGE FIXES ===== */
+    body {
+      padding-top: 90px; /* prevents navbar overlap */
+    }
+
+    .blog-card {
+      background: #1e293b;
+      border-radius: 20px;
+      overflow: hidden;
+      height: 100%;
+      transition: transform 0.3s ease;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .blog-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .blog-content {
+      padding: 20px;
+    }
+
+    .blog-date {
+      font-size: 14px;
+      color: #9ca3af;
+    }
+
+    .blog-link {
+      text-decoration: none;
+      color: #ec4899;
+      font-weight: 600;
+    }
+
+    .blog-link:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 576px) {
+      .blog-content h3 {
+        font-size: 18px;
+      }
+
+      .section-title {
+        font-size: 28px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-
- 
- 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#"><i class="fas fa-chart-line"></i> DigiMarketing Pro</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="./index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./service.html">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./blog.html">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./portfolio.html">Portfolio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./contact.html">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-
-<section class="blog" style="margin-top:100px">
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg fixed-top bg-dark">
   <div class="container">
-    <div class="text-center" data-aos="fade-up">
+    <a class="navbar-brand text-white" href="#">
+      <i class="fas fa-chart-line"></i> DigiMarketing Pro
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link text-white" href="./index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="./service.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link text-white active" href="./blog.html">Blog</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="./portfolio.html">Portfolio</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="./contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- BLOG SECTION -->
+<section class="blog">
+  <div class="container">
+    <div class="text-center mb-5">
       <h2 class="section-title">Latest Blog</h2>
-      <p class="section-subtitle">Marketing insights</p>
+      <p class="section-subtitle">Insights, strategies & trends in digital marketing</p>
     </div>
 
     <div class="row">
-      <div class="col-lg-4 mb-4">
+      <!-- BLOG 1 -->
+      <div class="col-lg-4 col-md-6 mb-4">
         <div class="blog-card">
-          <img src="https://images.unsplash.com/photo-1557838923-2985c318be48?w=600">
+          <img src="https://images.unsplash.com/photo-1557838923-2985c318be48?w=600" alt="SEO Blog">
           <div class="blog-content">
-            <h3>SEO Tips 2025</h3>
-            <p>Latest SEO techniques.</p>
+            <span class="blog-date">Jan 12, 2025</span>
+            <h3>SEO Tips to Rank Faster in 2025</h3>
+            <p>Learn modern SEO techniques to improve rankings and organic traffic.</p>
+            <a href="#" class="blog-link">Read More →</a>
           </div>
         </div>
       </div>
 
-      <div class="col-lg-4 mb-4">
+      <!-- BLOG 2 -->
+      <div class="col-lg-4 col-md-6 mb-4">
         <div class="blog-card">
-          <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600">
+          <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600" alt="Social Media Blog">
           <div class="blog-content">
-            <h3>Social Media Growth</h3>
-            <p>Boost engagement.</p>
+            <span class="blog-date">Feb 05, 2025</span>
+            <h3>Social Media Marketing Growth Hacks</h3>
+            <p>Strategies to grow your brand and increase engagement on social media.</p>
+            <a href="#" class="blog-link">Read More →</a>
           </div>
         </div>
       </div>
+
+      <!-- BLOG 3 -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="blog-card">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600" alt="Google Ads Blog">
+          <div class="blog-content">
+            <span class="blog-date">Mar 20, 2025</span>
+            <h3>Beginner's Guide to Google Ads</h3>
+            <p>Step-by-step guide to creating high-converting Google Ads campaigns.</p>
+            <a href="#" class="blog-link">Read More →</a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<script src="index.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+
+<!-- AOS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>AOS.init();</script>
+
 </body>
 </html>
